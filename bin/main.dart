@@ -5,11 +5,11 @@ import 'day39.dart';
 List<List> oneMoveToWin(List<List> towers) {
   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
   print(allPossibleMoves);
-  return allPossibleMoves[winningMoveNumber(allPossibleMoves)];
+  return allPossibleMoves[wiiningMoveIndex(allPossibleMoves)];
 }
 
 
-int winningMoveNumber(List<List> possibleMoves) {
+int wiiningMoveIndex(List<List> possibleMoves) {
   for (int i = 0; i < possibleMoves.length; i++) {
     //go through every possible sceanrio
     if (isThisWinningMove(possibleMoves[i])) {
@@ -35,18 +35,18 @@ int bestHanoiMove(List<List> towers) {
   print(allPossibleMoves);
 
   //-----------
-  if (winningMoveNumber(allPossibleMoves) == null) {
+  if (wiiningMoveIndex(allPossibleMoves) == null) {
     for (int i = 0; i < allPossibleMoves.length; i++) {
       List<List> allPossibleMovesAgain =
           hanoiPossibleMoves(allPossibleMoves[i]);
-      if (winningMoveNumber(allPossibleMovesAgain) != null) {
+      if (wiiningMoveIndex(allPossibleMovesAgain) != null) {
         print('wining move in 2nd case is $allPossibleMovesAgain');
-        print(winningMoveNumber(allPossibleMoves));
-        return winningMoveNumber(allPossibleMoves);
+        print(wiiningMoveIndex(allPossibleMoves));
+        return wiiningMoveIndex(allPossibleMoves);
       }
     }
   }
-  return winningMoveNumber(allPossibleMoves);
+  return wiiningMoveIndex(allPossibleMoves);
 }
 
 
