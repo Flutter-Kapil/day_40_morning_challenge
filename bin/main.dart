@@ -6,30 +6,19 @@ int bestHanoiMove(List<List> towers) {
   int numberOfMovesToWin = 0;
   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
   print(allPossibleMoves);
+
+  //-----------
   if (winningMoveNumber(allPossibleMoves) == null) {
     for (int i = 0; i < allPossibleMoves.length; i++) {
       List<List> allPossibleMovesAgain =
           hanoiPossibleMoves(allPossibleMoves[i]);
-      if (winningMoveNumber(allPossibleMovesAgain[i]) != null) {
-        return winningMoveNumber(allPossibleMoves[i]);
+      if (winningMoveNumber(allPossibleMovesAgain) != null) {
+        print('wining move in 2nd case is $allPossibleMovesAgain');
+        print(winningMoveNumber(allPossibleMoves));
+        return winningMoveNumber(allPossibleMoves);
       }
     }
   }
-
-  // if(winningMoveNumber(allPossibleMoves)==null){
-  //   numberOfMovesToWin++;
-  //   print('numberOfMovesToWin:$numberOfMovesToWin');
-  //   allPossibleMoves.forEach((oneOfTheMovesOutput){
-  //     if(bestHanoiMove(oneOfTheMovesOutput)!=null){
-  //       //if any of the possible moves result in wiining game after one more move,
-  //       //then do this
-  //       return int;
-  //     }
-  //     return bestHanoiMove(oneOfTheMovesOutput);
-  //   });
-  // }else{
-  //   return winningMoveNumber(allPossibleMoves);
-  // }
   return winningMoveNumber(allPossibleMoves);
 }
 
