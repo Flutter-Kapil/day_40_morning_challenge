@@ -4,11 +4,8 @@ import 'day39.dart';
 // Find the best move given the state of Towers of Hanoi board
  List<List> threeMoveToWin(List<List> towers) {
    List<List> allPossibleMoves = hanoiPossibleMoves(towers);
-  // print(allPossibleMoves);
   for (int i = 0; i < allPossibleMoves.length; i++) {
-    //go through every possible sceanrio
     if (twoMoveToWin(allPossibleMoves[i])!=null) {
-      // print('here in winningMove function');
       return allPossibleMoves[i];
     }
   }
@@ -17,11 +14,8 @@ import 'day39.dart';
 //-------
 List<List> twoMoveToWin(List<List> towers) {
    List<List> allPossibleMoves = hanoiPossibleMoves(towers);
-  // print(allPossibleMoves);
   for (int i = 0; i < allPossibleMoves.length; i++) {
-    //go through every possible sceanrio
     if (oneMoveToWin(allPossibleMoves[i])!=null) {
-      // print('here in winningMove function');
       return allPossibleMoves[i];
     }
   }
@@ -30,11 +24,8 @@ List<List> twoMoveToWin(List<List> towers) {
 //-------------
 List<List> oneMoveToWin(List<List> towers) {
   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
-  // print(allPossibleMoves);
   for (int i = 0; i < allPossibleMoves.length; i++) {
-    //go through every possible sceanrio
     if (isThisWinningMove(allPossibleMoves[i])) {
-      // print('here in winningMove function');
       return allPossibleMoves[i];
     }
   }
