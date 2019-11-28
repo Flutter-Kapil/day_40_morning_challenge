@@ -5,21 +5,32 @@ import 'day39.dart';
 List<List> oneMoveToWin(List<List> towers) {
   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
   print(allPossibleMoves);
-  return allPossibleMoves[wiiningMoveIndex(allPossibleMoves)];
-}
-
-
-int wiiningMoveIndex(List<List> possibleMoves) {
-  for (int i = 0; i < possibleMoves.length; i++) {
+  int winningMoveIndex;
+  for (int i = 0; i < allPossibleMoves.length; i++) {
     //go through every possible sceanrio
-    if (isThisWinningMove(possibleMoves[i])) {
+    if (isThisWinningMove(allPossibleMoves[i])) {
       // print('here in winningMove function');
-      return i;
+      winningMoveIndex= i;
     }
   }
-
-  return null;
+  if(winningMoveIndex ==null){
+    return null;
+  }
+  return allPossibleMoves[winningMoveIndex];
 }
+
+
+// int winningMoveIndex(List<List> possibleMoves) {
+//   for (int i = 0; i < possibleMoves.length; i++) {
+//     //go through every possible sceanrio
+//     if (isThisWinningMove(possibleMoves[i])) {
+//       // print('here in winningMove function');
+//       return i;
+//     }
+//   }
+
+//   return null;
+// }
 
 bool isThisWinningMove(List possibleMov) {
   if (possibleMov[0].isEmpty && possibleMov[1].isEmpty) {
@@ -29,25 +40,25 @@ bool isThisWinningMove(List possibleMov) {
 }
 
 //------------------------ends here---------------
-int bestHanoiMove(List<List> towers) {
-  int numberOfMovesToWin = 0;
-  List<List> allPossibleMoves = hanoiPossibleMoves(towers);
-  print(allPossibleMoves);
+// int bestHanoiMove(List<List> towers) {
+//   int numberOfMovesToWin = 0;
+//   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
+//   print(allPossibleMoves);
 
   //-----------
-  if (wiiningMoveIndex(allPossibleMoves) == null) {
-    for (int i = 0; i < allPossibleMoves.length; i++) {
-      List<List> allPossibleMovesAgain =
-          hanoiPossibleMoves(allPossibleMoves[i]);
-      if (wiiningMoveIndex(allPossibleMovesAgain) != null) {
-        print('wining move in 2nd case is $allPossibleMovesAgain');
-        print(wiiningMoveIndex(allPossibleMoves));
-        return wiiningMoveIndex(allPossibleMoves);
-      }
-    }
-  }
-  return wiiningMoveIndex(allPossibleMoves);
-}
+//   if (winningMoveIndex(allPossibleMoves) == null) {
+//     for (int i = 0; i < allPossibleMoves.length; i++) {
+//       List<List> allPossibleMovesAgain =
+//           hanoiPossibleMoves(allPossibleMoves[i]);
+//       if (winningMoveIndex(allPossibleMovesAgain) != null) {
+//         print('wining move in 2nd case is $allPossibleMovesAgain');
+//         print(winningMoveIndex(allPossibleMoves));
+//         return winningMoveIndex(allPossibleMoves);
+//       }
+//     }
+//   }
+//   return winningMoveIndex(allPossibleMoves);
+// }
 
 
 bool winningStack(List stack) {
@@ -70,5 +81,5 @@ main() {
     [],
     [2, 3, 4]
   ];
-  print(bestHanoiMove(currentGameInstance));
+  print(oneMoveToWin(currentGameInstance));
 }
