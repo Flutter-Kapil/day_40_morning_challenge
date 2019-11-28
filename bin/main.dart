@@ -3,8 +3,14 @@ import 'day39.dart';
 // Find the best move given the state of Towers of Hanoi board
 
 int bestHanoiMove(List<List> towers) {
-  print(hanoiPossibleMoves(towers));
-  return winningMoveNumber(hanoiPossibleMoves(towers));
+  int numberOfMovesToWin =0;
+  List<List> allPossibleMoves = hanoiPossibleMoves(towers);
+  print(allPossibleMoves);
+  if(winningMoveNumber(hanoiPossibleMoves(towers))==null){
+    numberOfMovesToWin++;
+    
+  }
+  return winningMoveNumber(allPossibleMoves);
 }
 
 int winningMoveNumber(List<List> possibleMoves) {
@@ -31,9 +37,9 @@ bool winningStack(List stack) {
 main() {
   print(winningStack([1,2,3,4]));
   List<List> currentGameInstance = [
-    [],
+    [2],
     [1],
-    [2, 3, 4]
+    [3, 4]
   ];
   print(bestHanoiMove(currentGameInstance));
 }
