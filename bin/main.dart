@@ -30,9 +30,10 @@ bool winningStack(List stack) {
 
 main() {
   print(winningStack([1,2,3,4]));
-  print(bestHanoiMove([
+  List<List> currentGameInstance = [
     [],
     [1],
     [2, 3, 4]
-  ]));
+  ];
+  print(bestHanoiMove(currentGameInstance));
 }
