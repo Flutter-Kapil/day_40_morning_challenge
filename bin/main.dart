@@ -35,6 +35,10 @@ int winningMoveNumber(List<List> possibleMoves) {
 }
 
 bool winningStack(List stack) {
+  //bug fix, otherwise even [1,2,3] , [1,2] etc are also counted as winning tower
+  if(stack.length!=4){
+    return false;
+  }
   for (int i = 0; i < stack.length; i++) {
     if (stack[i] != i + 1) {
       return false;
@@ -46,9 +50,9 @@ bool winningStack(List stack) {
 main() {
   print(winningStack([1, 2, 3, 4]));
   List<List> currentGameInstance = [
-    [1],
+    [2 ,1],
     [],
-    [2, 3, 4]
+    [3, 4]
   ];
   print(bestHanoiMove(currentGameInstance));
 }
