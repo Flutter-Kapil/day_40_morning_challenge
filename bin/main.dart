@@ -2,20 +2,21 @@ import 'day39.dart';
 // Challenge
 // Find the best move given the state of Towers of Hanoi board
 
-bool bestHanoiMove(List<List> towers) {
-  return winningMove(hanoiPossibleMoves(towers));
+int bestHanoiMove(List<List> towers) {
+  print(hanoiPossibleMoves(towers));
+  return winningMoveNumber(hanoiPossibleMoves(towers));
 }
 
-bool winningMove(List<List> possibleMoves) {
+int winningMoveNumber(List<List> possibleMoves) {
   for (int i = 0; i < possibleMoves.length; i++) {
     //go through every possible sceanrio
     if (winningStack(possibleMoves[i][2])) {
       print('here in winningMove function');
-      return true;
+      return i;
     }
   }
 
-  return false;
+  return null;
 }
 
 bool winningStack(List stack) {
