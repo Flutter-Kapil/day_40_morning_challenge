@@ -12,6 +12,14 @@ bool winningMove( List<List> possibleMoves){
 
 }
 
+bool winningStack(List stack){
+  for(int i=1;i<=stack.length;i++){
+    if(stack!=i){
+      return false;
+    }
+  }
+  return true;
+}
 main() {
   print(bestHanoiMove([[],[1],[2,3,4]]));
 }
