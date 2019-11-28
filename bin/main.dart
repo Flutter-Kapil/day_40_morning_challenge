@@ -5,11 +5,11 @@ import 'day39.dart';
 
 List<List> twoMoveToWin(List<List> towers) {
   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
-  print(allPossibleMoves);
+  // print(allPossibleMoves);
   int winningMoveIndex;
   for (int i = 0; i < allPossibleMoves.length; i++) {
     //go through every possible sceanrio
-    if (isThisWinningMove(allPossibleMoves[i])) {
+    if (oneMoveToWin(allPossibleMoves[i])!=null) {
       // print('here in winningMove function');
       winningMoveIndex= i;
     }
@@ -22,7 +22,7 @@ List<List> twoMoveToWin(List<List> towers) {
 //-------------
 List<List> oneMoveToWin(List<List> towers) {
   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
-  print(allPossibleMoves);
+  // print(allPossibleMoves);
   for (int i = 0; i < allPossibleMoves.length; i++) {
     //go through every possible sceanrio
     if (isThisWinningMove(allPossibleMoves[i])) {
@@ -43,10 +43,17 @@ bool isThisWinningMove(List possibleMov) {
 
 
 main() {
-  List<List> currentGameInstance = [
+  List<List> GameInstance0101 = [
+    [1],
+    [],
+    [2,3, 4]
+  ];
+  print(oneMoveToWin(GameInstance0101));
+
+  List<List> GameInstance0201 = [
     [1],
     [2],
     [3, 4]
   ];
-  print(oneMoveToWin(currentGameInstance));
+  print(twoMoveToWin(GameInstance0201));
 }
