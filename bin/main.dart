@@ -2,6 +2,15 @@ import 'day39.dart';
 
 // Challenge
 // Find the best move given the state of Towers of Hanoi board
+List<List> fourMoveToWin(List<List> towers) {
+   List<List> allPossibleMoves = hanoiPossibleMoves(towers);
+  for (int i = 0; i < allPossibleMoves.length; i++) {
+    if (threeMoveToWin(allPossibleMoves[i])!=null) {
+      return allPossibleMoves[i];
+    }
+  }
+  return null;
+}
  List<List> threeMoveToWin(List<List> towers) {
    List<List> allPossibleMoves = hanoiPossibleMoves(towers);
   for (int i = 0; i < allPossibleMoves.length; i++) {
@@ -61,4 +70,5 @@ main() {
     [3, 4]
   ];
   print(threeMoveToWin(GameInstance0301));
+  print(fourMoveToWin([[1,2,3],[],[4]]));
 }
